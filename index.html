@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</head>
+<body>
+    
+
+    <div class="tela-login">
+        <form action="">
+            <div class="usario text-center">
+                <img width="64" height="64" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/external-user-interface-kiranshastry-lineal-kiranshastry.png" alt="external-user-interface-kiranshastry-lineal-kiranshastry"/>
+            </div>
+            <div class="mb-3 mt-3">
+              <label for="uname" class="form-label"><img width="32" height="32" src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/32/external-user-back-to-school-kmg-design-glyph-kmg-design.png" alt="external-user-back-to-school-kmg-design-glyph-kmg-design"/></label>
+              <input type="text" class="form-control" id="uname" placeholder="Usuario" name="uname">
+            </div>
+            <div class="mb-3">
+              <label for="pwd" class="form-label"><img width="32" height="32" src="https://img.icons8.com/sf-regular-filled/48/lock.png" alt="lock"/></label>
+              <input type="password" class="form-control" id="pwd" placeholder="Senha" name="pswd">
+            </div>
+
+            <div class="mb-3">
+              <div class="mb-2">
+                <button  type="button" class="btn" onclick="loginWithFacebook()"><i class="bi bi-facebook"></i> Login com 
+                     Facebook</button>
+              </div>
+            </div>
+
+           
+    
+            <button type="submit" class="btn botao">Entrar</button>
+          </form>
+    </div>
+
+    <script>
+      // Inicialize o SDK do Facebook
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '363454722924498',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v18.0'
+        });
+          
+        FB.AppEvents.logPageView();   
+      };
+  
+      // Carregue o SDK do Facebook assincronamente
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+  
+      // Função para realizar o login com o Facebook
+      function loginWithFacebook() {
+        FB.login(function(response) {
+          if (response.authResponse) {
+            console.log('Autenticação bem-sucedida:', response);
+            // Aqui você pode realizar ações adicionais após o login bem-sucedido
+          } else {
+            console.log('Login cancelado ou ocorreu um erro.');
+          }
+        }, {scope: 'email'}); // Defina as permissões necessárias
+      }
+    </script>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+</html>
+
